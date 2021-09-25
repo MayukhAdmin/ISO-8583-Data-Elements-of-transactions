@@ -1,0 +1,878 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<style>
+.wrapper{
+outline-color: blue;
+outline-style: solid;
+width:700px;
+background:#eee;
+margin:0 auto;
+}
+</style>
+    </head>
+<body>
+<div class="wrapper">
+
+    <div style="font-size:50px">
+        <center><b>Data elements</b></center>
+        </div>
+    <br>
+
+
+    <div style="outline-color: coral; outline-style: ridge;">
+    <!-- Selecting scheme dropdown-->
+        <lable><b>Choose Scheme:</b></lable>
+    <select id="scheme" onchange="showDiv(this)" Style="width: auto;" >
+        <option value="None" >Select Scheme</option>
+        <option value="ID001">VISA</option>
+        <option value="ID002">MasterCard</option>
+    </select>
+    </div>
+
+
+    <br>
+    <br>
+
+    <div id="visaShow" Style="visibility:hidden; outline-color: coral; outline-style: ridge;">
+    <!--Selecting VISA transaction dropdown>-->
+        <lable><b>Choose VISA transaction:</b></lable>
+    <select id="visaTransactions" onchange="showVisa(this)" >
+        <option value="None" >Select Transaction</option>
+        <option value="ATMMag_VISA">ATM Magstripe_VISA</option>
+        <option value="ATMEMV_VISA">ATM EMV_VISA</option>
+        <option value="POSMag_VISA">POS Magstripe_VISA</option>
+        <option value="POSEMV_VISA">POS EMV_VISA</option>
+        <option value="PreAuth_VISA">Pre Auth_VISA</option>
+        <option value="PreAuthComplete_VISA">Pre Auth Completion_VISA</option>
+        <option value="Contactless_VISA">Contactless_VISA</option>
+        <option value="Fallback_VISA">Fallback_VISA</option>
+        <option value="PosCashBack_VISA">Purchase with Cashback_VISA</option>
+        <option value="Ecom_VISA">E-Commerce_VISA</option>
+    </select>
+    </div>
+
+    <br>
+    <br>
+
+    <!--Selecting Mastercard transaction dropdown>-->
+    <div id="mcShow" Style="visibility:hidden; outline-color: coral; outline-style: ridge;">
+        <lable><b>Choose Master Card transaction:</b></lable>
+    <select id="mcTransactions" onchange="showMc(this)" >
+        <option value="None" >Select Transaction</option>
+        <option value="ATMMag_MC">ATM Magstripe_MC</option>
+        <option value="ATMEMV_MC">ATM EMV_MC</option>
+        <option value="POSMag_MC">POS Magstripe_MC</option>
+        <option value="POSEMV_MC">POS EMV_MC</option>
+        <option value="PreAuth_MC">Pre Auth_MC</option>
+        <option value="Ecom_MC">E-Commerce_MC</option>
+    </select>
+    </div>
+    <br>
+    <br>
+
+<!================================  VISA Transaction Data Elements===================================================================>
+
+    <!--Visa transactions div-->
+    <!--VISA ATM Magstripe Data elements-->
+    <div id="ATMMag_VISA" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">ATM Magstripe Visa Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896 <br>
+        DE 3 Processing code= 01<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 6010/6011<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 60 Additional POS information<br>
+        DE 60.1 Terminal Type= 2(ATM)<br>
+        DE 60.2 Entry Caps= 2(Mag Stripe)<br>
+        DE 60.11 Cardholder ID= 2(PIN)<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 55 EMV data<br>
+    </div>
+
+
+    <!--VISA ATM EMV Data elements-->
+    <div id="ATMEMV_VISA" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">ATM EMV Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896 <br>
+        DE 3 Processing code= 01<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 6010/6011<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 051<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 55 EMV data<br>
+        DE 60 Additional POS information<br>
+        DE 60.1 Terminal Type= 2(ATM)<br>
+        DE 60.2 Entry Caps= 5(Smart card)<br>
+        DE 60.11 Cardholder ID= 2(PIN)<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+
+    </div>
+
+
+
+    <!--VISA POS Magstripe Data elements-->
+    <div id="POSMag_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">POS Visa Magstripe Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896 <br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 60 Additional POS information<br>
+        DE 60.2 Entry Caps= 2(Mag Stripe)<br>
+        DE 60.5/.6 Merchant type= 09(ATM CASH)<br>
+        DE 60.11 Cardholder ID= 2(PIN)<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 55 EMV data<br>
+    </div>
+
+
+     <!--VISA POS EMV Data elements-->
+    <div id="POSEMV_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">POS Visa EMV Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896 <br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 051<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 55 EMV data<br>
+        DE 60 Additional POS information<br>
+        DE 60.2 Entry Caps= 5(Smart Card)<br>
+        DE 60.5/.6 Merchant type= 09(ATM CASH)<br>
+        DE 60.11 Cardholder ID= 2(PIN)<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+
+    </div>
+
+
+    <!--VISA Pre Auth Data elements-->
+    <div id="PreAuth_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">Pre Auth Visa Transaction DE are:</font></b><br><br>
+        MTI 100<br>
+        DE 2 Primary Account Number= 475407XXXXXX7896<br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901(MagStripe), 051(EMV)<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 55 EMV data(Only for EMV transactions)<br>
+        DE 60 Additional POS information<br>
+        DE 60.2 Entry Caps= 2(Mag Stripe), 5(Smart card for EMV)<br>
+        DE 60.11 Cardholder ID= 2(PIN)<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs while doing Magstripe transaction:</b><br><br>
+        DE 55 EMV data<br><br>
+
+    </div>
+
+
+     <!--VISA Pre Auth Completion Data elements-->
+    <div id="PreAuthComplete_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">Pre Auth Completion Visa Transaction DE are:</font></b><br><br>
+        MTI 220<br>
+        DE 2 Primary Account Number= 475407XXXXXX7896<br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 14 Expiry date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901(MagStripe), 051(EMV)<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 38 Authorisation Number<br>
+        DE 39 Response Code= 00(Accepted)<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= IN(eg. For India give IN)<br>
+        DE 44 Additional Response Data<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 55 EMV Data(Only for EMV transactions)<br>
+        DE 60 Additional POS information<br>
+        DE 60.2 Entry Caps= 2(Mag Stripe), 5(Smart card for EMV)<br>
+        DE 60.11 Cardholder ID= 2(PIN)<br>
+        DE 62 Custom payment Service<br>
+        DE 120 Original Type<br>
+        <br>
+        <b>Do not send the below DEs while doing Magstripe transaction:</b><br><br>
+        DE 55 EMV data<br><br>
+
+    </div>
+
+
+     <!--VISA Contactless Data elements-->
+    <div id="Contactless_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">Contactless Visa Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896<br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 14 Expiry date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 070<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 38 Authorisation Number<br>
+        DE 39 Response Code= 00(Accepted)<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= IN(eg. For India give IN)<br>
+        DE 44 Additional Response Data<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 55 EMV Data<br>
+        DE 60.2 Entry Caps= 8(Proximity)<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br><br>
+
+    </div>
+
+
+    <!--VISA Fallback Data elements-->
+    <div id="Fallback_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">Contactless Visa Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896<br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 14 Expiry date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 38 Authorisation Number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= IN(eg. For India give IN)<br>
+        DE 44 Additional Response Data<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 60.2 Entry Caps= 5(Smart Card)<br>
+        DE 60.3 Last Chip= 2(Last Chip transaction error)<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 55 EMV Data<br>
+
+    </div>
+
+
+    <!--VISA Fallback Data elements-->
+    <div id="PosCashBack_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">Purchase with Cash Back Visa Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896<br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 14 Expiry date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901(Magstripe)/051(EMV)<br>
+        DE 25 Point of service(POS) condition code= 00<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 38 Authorisation Number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= IN(eg. For India give IN)<br>
+        DE 44 Additional Response Data<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 55 EMV data(only for EMV trnsaction)<br>
+        DE 60.2 Entry Caps= 2(Magstripe)/5(Smart Card)<br>
+        DE 61.1 Other Amounts = numeric 12 digits of the cash back amount.<br>
+        DE 61.2 Other Amounts = numeric 12 digits of the cash back amount.<br>
+        DE 62 Custom payment Service<br>
+        <br>
+        <b>Do not send the below DEs for Magstripe transaction:</b><br><br>
+        DE 55 EMV Data<br>
+
+    </div>
+
+    <!--VISA E-Commerce Data elements-->
+    <div id="Ecom_VISA" style="display:none; outline-color: black; outline-style: solid;">
+	    <b style="font-size:20px"><font color="black">Electronic Commerce Visa Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 475407XXXXXX7896<br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 14 Expiry date<br>
+        DE 18 Merchant Category Code= 5940<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 010(Magstripe)/051(EMV)<br>
+        DE 25 Point of service(POS) condition code= 59<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 37 Retrieval reference number<br>
+        DE 38 Authorisation Number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= IN(eg. For India give IN)<br>
+        DE 44 Additional Response Data<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 60.9-10 MOTO= 05(Authenticated)/06(Attempted)/07(Non-Secure)<br>
+        DE 60.11 Cardholder ID= 4(MOTO/Ecommerce)<br>
+        DE 62 Custom payment Service<br>
+        DE 63.6 C/back(give same as DE 60.9-10)= 0005000(Authenticated)/0006000(Attempted)/0007000(Non-Secure)<br>
+        DE 126.9 CAVV Data= Give correct UCAf value with key.<br>
+        DE 126.10 CVV<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 35 Track 2 data<br>
+        DE 52 PIN Data<br>
+        DE 53 Security Data<br>
+        DE 55 EMV Data<br>
+
+    </div>
+
+
+<!================================  Master Card Transaction Data Elements===================================================================>
+
+    <!--Master Card ATM Magstipe elements-->
+    <div id="ATMMag_MC" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">ATM Master Card Magstripe Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 575407XXXXXX7896 <br>
+        DE 3 Processing code= 01<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 6010/6011<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 48 Txn Category Code= Z(ATM CashDisbursement)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 61.7 Transaction Status = 0(Normal Request)<br>
+        DE 61.10 CAT Level= 1(ATM with PIN)<br>
+        DE 61.11 Input Capability= 2(Magstripe only)/ 8(EMV/Strip/Manual)<br>
+        DE 61.13 Country Code= Country ISO code(eg. for India set 356)<br>
+        DE 126 Cross-border indicator= NN(Domestic)/YY(International)<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 55 EMV data<br>
+    </div>
+
+
+    <!--Master Card ATM EMV elements-->
+    <div id="ATMEMV_MC" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">ATM Master Card EMV Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 575407XXXXXX7896 <br>
+        DE 3 Processing code= 01<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 6010/6011<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 051<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 48 Txn Category Code= Z(ATM CashDisbursement)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 55 EMV data<br>
+        DE 61.7 Transaction Status = 0(Normal Request)<br>
+        DE 61.10 CAT Level= 1(ATM with PIN)<br>
+        DE 61.11 Input Capability= 8(EMV/Strip/Manual)/9(EMV Only)<br>
+        DE 61.13 Country Code= Country ISO code(eg. for India set 356)<br>
+        DE 126 Cross-border indicator= NN(Domestic)/YY(International)<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+
+    </div>
+
+
+    <!--Master Card POS Magstipe elements-->
+    <div id="POSMag_MC" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">POS Master Card Magstripe Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 575407XXXXXX7896 <br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 48 Txn Category Code= R(Retail Sale)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 61.7 Transaction Status = 0(Normal Request)<br>
+        DE 61.10 CAT Level= 0(No CAT)<br>
+        DE 61.11 Input Capability= 2(Magstripe only)/ 8(EMV/Strip/Manual)<br>
+        DE 61.13 Country Code= Country ISO code(eg. for India set 356)<br>
+        DE 126 Cross-border indicator= NN(Domestic)/YY(International)<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 55 EMV data<br>
+    </div>
+
+
+    <!--Master Card POS EMV elements-->
+    <div id="POSEMV_MC" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">POS Master Card EMV Transaction DE are:</font></b><br><br>
+        DE 2 Primary Account Number= 575407XXXXXX7896 <br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 051<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 48 Txn Category Code= R(Retail Sale)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 55 EMV data<br>
+        DE 61.7 Transaction Status = 0(Normal Request)<br>
+        DE 61.10 CAT Level= 0(No CAT)<br>
+        DE 61.11 Input Capability= 8(EMV/Strip/Manual)/9(EMV Only)<br>
+        DE 61.13 Country Code= Country ISO code(eg. for India set 356)<br>
+        DE 126 Cross-border indicator= NN(Domestic)/YY(International)<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+
+    </div>
+
+
+    <!--Master Card Preauth elements-->
+    <div id="PreAuth_MC" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">Preauth Master Card Magstripe Transaction DE are:</font></b><br><br>
+        MTI 200<br>
+        DE 2 Primary Account Number= 575407XXXXXX7896 <br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 5999<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 901<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 35 Track 2 data= Discretionary  data should be set correct for the card.<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 48 Txn Category Code= R(Retail Sale)<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 61.7 Transaction Status = 4(Preauthorized Request)<br>
+        DE 61.10 CAT Level= 0(No CAT)<br>
+        DE 61.11 Input Capability= 2(Magstripe only)/ 8(EMV/Strip/Manual)<br>
+        DE 61.13 Country Code= Country ISO code(eg. for India set 356)<br>
+        DE 126 Cross-border indicator= NN(Domestic)/YY(International)<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 55 EMV data<br>
+    </div>
+
+    <!--Master Card Electronic Commerce elements-->
+    <div id="Ecom_MC" style="display:none; outline-color: black; outline-style: solid;">
+        <b style="font-size:20px"><font color="black">Electronic Commerce Master Card Transaction DE are:</font></b><br><br>
+        MTI 200<br>
+        DE 2 Primary Account Number= 575407XXXXXX7896 <br>
+        DE 3 Processing code= 00<br>
+        DE 4 Transaction Amount<br>
+        DE 5 Settlement Amount<br>
+        DE 6 Billing Amount<br>
+        DE 7 Transmission date & time<br>
+        DE 11 System trace audit number (STAN)<br>
+        DE 12 Local transaction time (hhmmss)<br>
+        DE 13 Local transaction date (MMDD)<br>
+        DE 14 Expiration date<br>
+        DE 15 Settlement date<br>
+        DE 16 Conversion date<br>
+        DE 18 Merchant Category Code= 5045<br>
+        DE 19 Acquiring institution (country code)<br>
+        DE 22 Point of service(POS) entry mode= 810<br>
+        DE 23 PAN sequence number= 000<br>
+        DE 32 Acquiring institution identification code<br>
+        DE 37 Retrieval reference number<br>
+        DE 41 Card acceptor terminal identification<br>
+        DE 42 Card acceptor identification code<br>
+        DE 43 Card acceptor name/location <br>
+        DE 43.39 Country Code= Domestic value(eg. For India give IN)<br>
+        DE 48 Txn Category Code= T(Phone, Mail or Electronic Commerce)<br>
+        DE 48.42 UCAF indicator= 212(Authenticated)/211(Attempted)/210(Non-Secure)<br>
+        DE 48.43 UCAF value<br>
+        DE 48.92 CVC2<br>
+        DE 49 Transaction Currency code<br>
+        DE 50 Settlement Currency code<br>
+        DE 51 Cardholder billing Currency code<br>
+        DE 61.4 Cardholder Present = 5(E-Commerce)<br>
+        DE 61.7 Transaction Status = 0(Normal Request)<br>
+        DE 61.10 CAT Level= 6(E-Commerce)<br>
+        DE 61.11 Input Capability= 0(Unknown)<br>
+        DE 61.13 Country Code= Country ISO code(eg. for India set 356)<br>
+        DE 126 Cross-border indicator= NN(Domestic)/YY(International)<br>
+        <br>
+        <b>Do not send the below DEs:</b><br><br>
+        DE 35 Track 2 data<br>
+        DE 52 Personal identification number(PIN) data<br>
+        DE 53 Security related control information<br>
+        DE 55 EMV data<br>
+    </div>
+    <br>
+
+
+
+
+<a>Designed by Mayukh Ranjan Mishra</a>
+
+
+
+
+<Script> // Apart from adding new ID in "function showNon", DO NOT CHANGE ANYTHING BELOW THIS.
+ //Hide or unhide visa or mastercard transaction dropdown
+function showDiv(ddl){
+
+ var dv1 = document.getElementById("visaShow");
+ var dv2 = document.getElementById("mcShow");
+
+ //IDs to select "none" as default while changing scheme
+ var dv3 = document.getElementById("visaTransactions");
+ var dv4 = document.getElementById("mc");
+
+ if (ddl.value == "None") {
+ showNon();
+ dv1.style.visibility = "hidden";
+ dv2.style.visibility = "hidden";
+ }
+ if (ddl.value == "ID001") {
+ showNon();
+  dv1.style.visibility = "visible";
+  dv2.style.visibility = "hidden";
+  document.getElementById("visaTransactions").options[0].selected=true;
+ }
+ if (ddl.value == "ID002") {
+ showNon();
+
+ dv1.style.visibility = "hidden";
+ dv2.style.visibility = "visible";
+ document.getElementById("mcTransactions").options[0].selected=true;
+ }
+ }
+
+ //Hide or unhide visa table
+ function showVisa(dd2){
+ var val= dd2.value;
+ var Visa = document.getElementById("visaShow");
+ if(dd2.value == "None") {
+  showNon();
+// Visa.style.visibility = "visible";
+ } else {
+  showNon();
+  showID(val);
+ }
+
+ }
+
+
+
+//Hide or unhide Master Card table
+ function showMc(dd3){
+var val= dd3.value;
+ var Visa = document.getElementById("visaShow");
+ if(dd3.value == "None") {
+  showNon();
+ //Visa.style.visibility = "visible";
+ } else {
+  showNon();
+  showID(val);
+ }
+ }
+
+
+
+//Function to show no transactions
+function showNon(y){
+    // Getting variables from ID
+    //VISA
+    document.getElementById("ATMMag_VISA").style.display = "none";
+    document.getElementById("ATMEMV_VISA").style.display = "none";
+    document.getElementById("POSMag_VISA").style.display = "none";
+    document.getElementById("POSEMV_VISA").style.display = "none";
+    document.getElementById("PreAuth_VISA").style.display = "none";
+    document.getElementById("PreAuthComplete_VISA").style.display = "none";
+    document.getElementById("Contactless_VISA").style.display = "none";
+    document.getElementById("Fallback_VISA").style.display = "none";
+    document.getElementById("PosCashBack_VISA").style.display = "none";
+    document.getElementById("Ecom_VISA").style.display = "none";
+
+
+
+
+    //MC
+    document.getElementById("ATMMag_MC").style.display = "none";
+    document.getElementById("ATMEMV_MC").style.display = "none";
+    document.getElementById("POSMag_MC").style.display = "none";
+    document.getElementById("POSEMV_MC").style.display = "none";
+    document.getElementById("PreAuth_MC").style.display = "none";
+    document.getElementById("Ecom_MC").style.display = "none";
+
+
+
+
+}
+
+
+// Function to show the particular transaction by the help of ID
+function showID(ID){
+    // Getting variables from ID
+    console.log(ID);
+    var dv1 = document.getElementById(ID);   // get this value
+
+    // Turning the display to block, so it can be visible
+    dv1.style.display = "block";
+}
+
+
+
+
+
+</Script>
+</div>
+</body>
+</html>
